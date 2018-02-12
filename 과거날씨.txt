@@ -1,0 +1,2 @@
+
+http://www.weather.go.kr/weather/climate/past_cal.jsp?stn=108&yy=1994&mm=8&obs=1&x=31&y=9
