@@ -71,7 +71,7 @@ def output(year, month):
     oh_index = 0
     for i in result:
         if index % 4 == 0:
-            print("======(%d)일" % (oh_index + 1))
+            print("==(%d)년==(%d)월==(%d)일" % (year,(month + 1),(oh_index + 1)))
             oh_index += 1
 
         index += 1
