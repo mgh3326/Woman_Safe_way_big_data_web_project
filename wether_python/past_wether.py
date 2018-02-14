@@ -26,8 +26,8 @@ def getPastWeather(result, year, month):
     tbody = store_table.find('tbody')
     # print(tbody)
     b_end = True
-    ohoh = []
-    yes = []
+    # ohoh = []
+    # yes = []
     # print(result)
     for store_tr in tbody.findAll('td'):
         b_end = False
@@ -65,26 +65,32 @@ def getPastWeather(result, year, month):
 def output(year, month):
     result = []
     getPastWeather(result, year, month)
-    print("--------(%d)월" % (month + 1))
+    # print("--------(%d)월" % (month + 1))
     # print(result)
     index = 0
     oh_index = 0
     for i in result:
         if index % 4 == 0:
-            
-            print("==(%d)년==(%d)월==(%d)일" %
-                  (year, (month + 1), (oh_index + 1)))
+            print("%d-%d-%d" %
+                  (year, (month + 1), (oh_index + 1)), end=", ")
             oh_index += 1
 
         index += 1
         # print(i)
-        print(i.split(':')[0])
-        print(i.split(':')[1])
+        # print(i.split(':')[0])
+        if index % 4 != 0:
+            print(i.split(':')[1], end=", ")
+        if index % 4 == 0:
+            print(i.split(':')[1])
+
     # print(result)
+
 
 # 평균기온
 # 최고기온
 # 평균운량
 # 일강수량
+print("날짜, 평균기온, 최고기온, 평균운량, 일강수량")
+
 for i in range(0, 12):
     output(2017, i)
