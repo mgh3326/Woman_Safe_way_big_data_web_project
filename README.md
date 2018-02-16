@@ -8,10 +8,13 @@
 
 <!-- One to two paragraph statement about your product and what it does. -->
 ![](images/logo.JPG)
-웹사이트 바로가기[website]..
+
+<hr/>
+
+
 [웹사이트 바로가기](https://bigweb.azurewebsites.net/).
-Link: [website][weblink]
-[weblink]: https://bigweb.azurewebsites.net/ "Go website"
+<!-- Link: [website][weblink]
+[weblink]: https://bigweb.azurewebsites.net/ "Go website" -->
 <!-- ## Installation
 
 OS X & Linux:
