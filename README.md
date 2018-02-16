@@ -1,11 +1,12 @@
 # 빅데이터 웹개발 F반 1조 프로젝트
-> Short blurb about what your product does.
+> 서울시 안심스카우트 서비스 개선
+
 
 <!-- [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url] -->
 
-One to two paragraph statement about your product and what it does.
+<!-- One to two paragraph statement about your product and what it does. -->
 
 ![](images/logo.JPG)
 
@@ -40,7 +41,7 @@ npm test
 
 ## Release History
 
-* 0.2.1
+<!-- * 0.2.1
     * CHANGE: Update docs (module code remains unchanged)
 * 0.2.0
     * CHANGE: Remove `setDefaultXYZ()`
@@ -49,9 +50,11 @@ npm test
     * FIX: Crash when calling `baz()` (Thanks @GenerousContributorName!)
 * 0.1.0
     * The first proper release
-    * CHANGE: Rename `foo()` to `bar()`
-* 0.0.1
-    * Work in progress
+    * CHANGE: Rename `foo()` to `bar()` -->
+* 2018/02/16
+    * README update
+* 2018/02/15
+    * 과거 날씨 엑셀화
 
 <!-- ## Meta
 
