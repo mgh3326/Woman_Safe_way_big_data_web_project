@@ -46,7 +46,7 @@
 		glbl.$allMenus = glbl.$allMenus.add( $menu );
 
 		this.$menu = $menu;
-		this.opts  = opts
+		this.opts  = opts;
 		this.conf  = conf;
 
 		this.serialnr = _serialnr++;
@@ -935,7 +935,7 @@
 		//	/DEPRECATED
 
 
-		c = $.extend( true, {}, $[ _PLUGIN_ ].configuration, c )
+		c = $.extend( true, {}, $[ _PLUGIN_ ].configuration, c );
 
 		//	Set pageSelector
 		if ( typeof c.pageSelector != 'string' )
