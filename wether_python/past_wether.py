@@ -60,7 +60,7 @@ def getPastWeather(result, year, month):  # 결과값을 년도, 달별로 받�
         # store_sido_gu = store_address.split()[:2]
     # print("ohoh", end="")
     # print(ohoh)
-    print(result)
+    # print(result)
     if b_end:  # 결과값을 옆으로 정리해서 출력
         return
 

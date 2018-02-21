@@ -20,4 +20,4 @@ def get_locate(str):
 
 # 출처: http://wkdgusdn3.tistory.com/entry/Python-주소로-위도-경도-검색하기 [착한코딩님의 블로그]
 
-get_locate("서울 파출소")
+get_locate("판고 파출소")
