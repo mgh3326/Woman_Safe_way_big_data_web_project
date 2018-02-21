@@ -95,4 +95,4 @@ def output(year, month):
 print("날짜, 평균기온, 최고기온, 최저기온, 평균운량, 일강수량")
 
 for i in range(0, 12):
-    output(2017, i)
+    output(2016, i)
