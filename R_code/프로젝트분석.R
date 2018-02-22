@@ -10,7 +10,7 @@ install.packages('corrplot')
 library(foreign)
 library(dplyr)
 library(ggplot2)
-library(readxl) ,,.
+library(readxl)
 library(plotly)
 library(dygraphs)
 library(xts)
@@ -159,7 +159,7 @@ g_5
 #trend 존재
 
 
-###############계절별 범주 나누기 전#############
+########## 계절별 범주 나누기 전#############
 #Correlation Analysis 
 # between useage and avgerage temperature 
 test_df_all_dataset <- df_all_dataset %>% 
@@ -204,7 +204,31 @@ ggplotly(g_6)
 
 
 
-#weather temperature 5도씩 범주 나눔, 
+#categorise the temperature variable in weaterdataset 
+#           to cold, cool, mild, hot 
+df_all_dataset <- df_all_dataset %>% 
+  mutate(Tem = ifelse(avg_tem <0 , 'cold',
+                      ifelse(avg_tem <=15, 'cool',
+                             ifelse(avg_tem <=25 ,'mild','hot'))))
+head(df_all_dataset)
+table(df_all_dataset$Tem)
+
+df_Tem_useage<-df_all_dataset %>%
+  filter(!is.na(useage)) %>% 
+  group_by(Tem) %>% 
+  summarise(sum_useage=sum(useage))
+
+df_Tem_useage
+g_7<- ggplot(data= df_Tem_useage, aes(x=Tem, y=sum_useage))+
+  geom_col()+
+  scale_x_discrete(limits= c('cold', 'cool','mild','hot'))
+
+g_7
+ggplotly(g_7)
+
+
+
+
 
 
 
