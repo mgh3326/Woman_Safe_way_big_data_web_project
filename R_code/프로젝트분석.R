@@ -27,30 +27,30 @@ df_dataset$date<- as.Date(df_dataset$date)
 df_dataset
 
 
-##01 relationship between day and useage  -¿äÀÏº°·Î ÀÌ¿ë½ÇÀû °Ç¼ö¿¡ Â÷ÀÌ°¡ ÀÖ´Â°¡?
-#°áÃøÄ¡ È®ÀÎ
+##01 relationship between day and useage  -ìš”ì¼ë³„ë¡œ ì´ìš©ì‹¤ì  ê±´ìˆ˜ì— ì°¨ì´ê°€ ìˆëŠ”ê°€?
+#ê²°ì¸¡ì¹˜ í™•ì¸
 table(is.na(df_dataset$day))
 table(is.na(df_dataset$useage))
-#¿äÀÏº° ÀÌ¿ë½ÇÀû
+#ìš”ì¼ë³„ ì´ìš©ì‹¤ì 
 df_day_useage<- df_dataset %>% 
   group_by(day) %>% 
   summarise(mean_useage= mean(useage, na.rm=T))
 df_day_useage
-#¿äÀÏº° HISTOGRAM
+#ìš”ì¼ë³„ HISTOGRAM
 g_1<- ggplot(data=df_day_useage, aes(x=day, y=mean_useage, fill=day))+ 
   geom_col()+
-  scale_x_discrete(limits= c('¿ù','È­','¼ö','¸ñ','±İ','Åä','ÀÏ'))+
-  scale_fill_discrete(limits= c('¿ù','È­','¼ö','¸ñ','±İ','Åä','ÀÏ'))
+  scale_x_discrete(limits= c('ì›”','í™”','ìˆ˜','ëª©','ê¸ˆ','í† ','ì¼'))+
+  scale_fill_discrete(limits= c('ì›”','í™”','ìˆ˜','ëª©','ê¸ˆ','í† ','ì¼'))
 g_1
 ggplotly(g_1)
 
 
-##02 relationship between date and useage  - ½Ã°£¿¡ µû¶ó ÀÌ¿ë½ÇÀû Â÷ÀÌ°¡ ÀÖ´Â°¡?
-#°áÃøÄ¡ Á¦°Å
+##02 relationship between date and useage  - ì‹œê°„ì— ë”°ë¼ ì´ìš©ì‹¤ì  ì°¨ì´ê°€ ìˆëŠ”ê°€?
+#ê²°ì¸¡ì¹˜ ì œê±°
 df_date_useage <- df_dataset %>% 
   filter(!is.na(useage))
 df_date_useage
-#»êÁ¡µµ ½Ã°è¿­±×·¡ÇÁ
+#ì‚°ì ë„ ì‹œê³„ì—´ê·¸ë˜í”„
 g_2<- ggplot(data=df_date_useage, aes(x=date, y=useage))+
   geom_point()+
   geom_line()+
@@ -61,16 +61,16 @@ ggplotly(g_2)
 
 
 
-##03 relationship between weather and useage  -ÃÖ°í±â¿Â¿¡ µû¶ó ÀÌ¿ë½ÇÀû Â÷ÀÌ°¡ ÀÖ´Â°¡?
+##03 relationship between weather and useage  -ìµœê³ ê¸°ì˜¨ì— ë”°ë¼ ì´ìš©ì‹¤ì  ì°¨ì´ê°€ ìˆëŠ”ê°€?
 #rename the variable of weather data 
-weather <- read.csv('wether_2016_seoul.csv')  #2017³â, ¿¬½À¿ëÀ¸·Î 2016³âµµ ¸¸µê
+weather <- read.csv('wether_2016_seoul.csv')  #2017ë…„, ì—°ìŠµìš©ìœ¼ë¡œ 2016ë…„ë„ ë§Œë“¦
 weather<- rename(weather,
-                 date=³¯Â¥,
-                 avg_tem=Æò±Õ±â¿Â,
-                 highest_tem=ÃÖ°í±â¿Â,
-                 lowest_tem=ÃÖÀú±â¿Â,
-                 avg_cloud=Æò±Õ¿î·®,
-                 daily_rain=ÀÏ°­¼ö·®)
+                 date=ë‚ ì§œ,
+                 avg_tem=í‰ê· ê¸°ì˜¨,
+                 highest_tem=ìµœê³ ê¸°ì˜¨,
+                 lowest_tem=ìµœì €ê¸°ì˜¨,
+                 avg_cloud=í‰ê· ìš´ëŸ‰,
+                 daily_rain=ì¼ê°•ìˆ˜ëŸ‰)
 names(weather)
 
 #join the dataset and weather by date
@@ -94,10 +94,10 @@ df_weather$lowest_tem<- as.character(df_weather$lowest_tem)
 class(df_weather$date)
 
 
-#¡É ±âÈ£ Á¦°Å
-#for-loop ·Î ¾îÄÉÇÏÂ¡...?
+#â„ƒ ê¸°í˜¸ ì œê±°
+#for-loop ë¡œ ì–´ì¼€í•˜ì§•...?
 fuc<- function(x){
-  sub('\\¡É', '', x)
+  sub('\\â„ƒ', '', x)
 }
 a<-df_weather$avg_tem
 b<-df_weather$highest_tem
@@ -145,21 +145,21 @@ ggplotly(g_4)
 
 
 
-#¿©·¯ °ª Ç¥ÇöÇÏ±â page 296 
-#½Ã°è¿­±×·¡ÇÁ - Æò±Õ±â¿Â, ÃÖ°í±â¿Â, ÃÖÀú±â¿Â
+#ì—¬ëŸ¬ ê°’ í‘œí˜„í•˜ê¸° page 296 
+#ì‹œê³„ì—´ê·¸ë˜í”„ - í‰ê· ê¸°ì˜¨, ìµœê³ ê¸°ì˜¨, ìµœì €ê¸°ì˜¨
 daavg <- xts(df_all_dataset$avg_tem, order.by=df_all_dataset$date)
 dahigh <- xts(df_all_dataset$highest_tem, order.by=df_all_dataset$date)
 dalow <- xts(df_all_dataset$lowest_tem, order.by=df_all_dataset$date)
 dabind <- cbind(daavg, dahigh, dalow)
-colnames(dabind) <- c('Æò±Õ±â¿Â','ÃÖ°í±â¿Â','ÃÖÀú±â¿Â')
+colnames(dabind) <- c('í‰ê· ê¸°ì˜¨','ìµœê³ ê¸°ì˜¨','ìµœì €ê¸°ì˜¨')
 head(dabind)
 g_5 <- dygraph(dabind) %>% dyRangeSelector()
 g_5
 #result 
-#trend Á¸Àç
+#trend ì¡´ì¬
 
 
-###############°èÀıº° ¹üÁÖ ³ª´©±â Àü#############
+###############ê³„ì ˆë³„ ë²”ì£¼ ë‚˜ëˆ„ê¸° ì „#############
 #Correlation Analysis 
 # between useage and avgerage temperature 
 test_df_all_dataset <- df_all_dataset %>% 
@@ -170,9 +170,9 @@ head(test_df_all_dataset)
 
 cor.test(test_df_all_dataset$useage, test_df_all_dataset$avg_tem)
 #result 
-#p-value < 0.05,  ÀÌ¿ë½ÇÀû°ú ±â¿ÂÀº »ó°üÀÌ Åë°èÀûÀ¸·Î À¯ÀÇÇÏ´Ù (ÀÎ°úX)
-#cor 0.433951  .....À½...trend Á¦°ÅÇÏ±â À§ÇØ
-#      ±â¿Âº° È¤Àº °èÀıº° ¹üÁÖ¸¦ µÎ°í ºĞ¼®ÇÏ´Â°ÍÀÌ ´õ À¯ÀÇ¹ÌÇÔ
+#p-value < 0.05,  ì´ìš©ì‹¤ì ê³¼ ê¸°ì˜¨ì€ ìƒê´€ì´ í†µê³„ì ìœ¼ë¡œ ìœ ì˜í•˜ë‹¤ (ì¸ê³¼X)
+#cor 0.433951  .....ìŒ...trend ì œê±°í•˜ê¸° ìœ„í•´
+#      ê¸°ì˜¨ë³„ í˜¹ì€ ê³„ì ˆë³„ ë²”ì£¼ë¥¼ ë‘ê³  ë¶„ì„í•˜ëŠ”ê²ƒì´ ë” ìœ ì˜ë¯¸í•¨
 
 df_num_dataset <- df_all_dataset %>% 
   select(useage,  highest_tem, lowest_tem) %>% 
@@ -182,7 +182,7 @@ round(cor_1, 3)
 corrplot(cor_1)
 
 ##remove the trend 
-##½Ãµµ seasonality, trend, random ¿ä¼Ò·Î ºĞÇØÇØ¼­ ±×¸®±â
+##ì‹œë„ seasonality, trend, random ìš”ì†Œë¡œ ë¶„í•´í•´ì„œ ê·¸ë¦¬ê¸°
 
 try <- df_all_dataset %>% 
   select(date, useage, avg_tem) %>% 
@@ -190,7 +190,7 @@ try <- df_all_dataset %>%
 head(try)
 plot(try, s.window = 'date')
 
-#±â¿Â¿¡ µû¶ó »ç¿ë½ÇÀûÀÌ ´Ù¸¦±î?
+#ê¸°ì˜¨ì— ë”°ë¼ ì‚¬ìš©ì‹¤ì ì´ ë‹¤ë¥¼ê¹Œ?
 out=lm(useage~avg_tem, try)
 summary(out)
 plot(useage~avg_tem, try)
@@ -204,7 +204,28 @@ ggplotly(g_6)
 
 
 
-#weather temperature 5µµ¾¿ ¹üÁÖ ³ª´®, 
+#weather temperature 5ë„ì”© ë²”ì£¼ ë‚˜ëˆ”, 
+#categorise the temperature variable in weaterdataset 
+#           to cold, cool, mild, hot 
+df_all_dataset <- df_all_dataset %>% 
+  mutate(Tem = ifelse(avg_tem <0 , 'cold',
+                      ifelse(avg_tem <=15, 'cool',
+                             ifelse(avg_tem <=25 ,'mild','hot'))))
+head(df_all_dataset)
+table(df_all_dataset$Tem)
+
+df_Tem_useage<-df_all_dataset %>%
+  filter(!is.na(useage)) %>% 
+  group_by(Tem) %>% 
+  summarise(sum_useage=sum(useage))
+
+df_Tem_useage
+g_7<- ggplot(data= df_Tem_useage, aes(x=Tem, y=sum_useage))+
+  geom_col()+
+  scale_x_discrete(limits= c('cold', 'cool','mild','hot'))
+
+g_7
+ggplotly(g_7)
 
 
 
