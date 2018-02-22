@@ -2,19 +2,26 @@ install.packages('foreign')
 install.packages('dplyr')
 install.packages('ggplot2')
 install.packages('readxl')
-install.packages('tidyr')
+install.packages('plotly')
+install.packages('dygraphs')
+install.packages('xts')
+install.packages('corrplot')
+
 library(foreign)
 library(dplyr)
 library(ggplot2)
-library(readxl)
-library(tidyr)
+library(readxl) ,,.
+library(plotly)
+library(dygraphs)
+library(xts)
+library(corrplot)
 
 setwd('c:\\easy_r')
 dataset<-read.csv('gwanakgu2016.csv')
 
 df_dataset <-data.frame(date=dataset$date,
-                         day=dataset$day,
-                         useage=dataset$useage)
+                        day=dataset$day,
+                        useage=dataset$useage)
 df_dataset$day<- as.character(df_dataset$day)
 df_dataset$date<- as.Date(df_dataset$date)
 df_dataset
@@ -29,13 +36,13 @@ df_day_useage<- df_dataset %>%
   group_by(day) %>% 
   summarise(mean_useage= mean(useage, na.rm=T))
 df_day_useage
-#막대그래프
+#요일별 HISTOGRAM
 g_1<- ggplot(data=df_day_useage, aes(x=day, y=mean_useage, fill=day))+ 
   geom_col()+
   scale_x_discrete(limits= c('월','화','수','목','금','토','일'))+
   scale_fill_discrete(limits= c('월','화','수','목','금','토','일'))
 g_1
-
+ggplotly(g_1)
 
 
 ##02 relationship between date and useage  - 시간에 따라 이용실적 차이가 있는가?
@@ -49,14 +56,14 @@ g_2<- ggplot(data=df_date_useage, aes(x=date, y=useage))+
   geom_line()+
   ylim(0,100)
 g_2
-
+ggplotly(g_2)
 
 
 
 
 ##03 relationship between weather and useage  -최고기온에 따라 이용실적 차이가 있는가?
 #rename the variable of weather data 
-weather <- read.csv('wether_2016_seoul_ex.csv')  #2017년, 연습용으로 2016년도 만듦
+weather <- read.csv('wether_2016_seoul.csv')  #2017년, 연습용으로 2016년도 만듦
 weather<- rename(weather,
                  date=날짜,
                  avg_tem=평균기온,
@@ -99,7 +106,6 @@ df_weather$avg_tem<- fuc(a)
 df_weather$highest_tem<- fuc(b)
 df_weather$lowest_tem<- fuc(c)
 
-
 df_weather$avg_tem<- as.numeric(df_weather$avg_tem)
 df_weather$highest_tem<- as.numeric(df_weather$highest_tem)
 df_weather$lowest_tem<- as.numeric(df_weather$lowest_tem)
@@ -123,6 +129,8 @@ g_3<- ggplot(data=df_date_highest_tem, aes(x=date, y=highest_tem))+
   geom_line()+
   ylim(-10,40)
 g_3
+ggplotly(g_3)
+
 
 #relationship between date and lowest_tem
 df_date_lowest_tem<- df_all_dataset %>% 
@@ -133,9 +141,70 @@ g_4<- ggplot(data=df_date_lowest_tem, aes(x=date, y=lowest_tem))+
   geom_line()+
   ylim(-10,40)
 g_4
+ggplotly(g_4)
 
-#overlay g_3 and g_4     ##질문
-g_5<- g_3 + g_4
+
+
+#여러 값 표현하기 page 296 
+#시계열그래프 - 평균기온, 최고기온, 최저기온
+daavg <- xts(df_all_dataset$avg_tem, order.by=df_all_dataset$date)
+dahigh <- xts(df_all_dataset$highest_tem, order.by=df_all_dataset$date)
+dalow <- xts(df_all_dataset$lowest_tem, order.by=df_all_dataset$date)
+dabind <- cbind(daavg, dahigh, dalow)
+colnames(dabind) <- c('평균기온','최고기온','최저기온')
+head(dabind)
+g_5 <- dygraph(dabind) %>% dyRangeSelector()
 g_5
+#result 
+#trend 존재
+
+
+###############계절별 범주 나누기 전#############
+#Correlation Analysis 
+# between useage and avgerage temperature 
+test_df_all_dataset <- df_all_dataset %>% 
+  select(useage, avg_tem) %>% 
+  filter(!is.na(useage))
+test_df_all_dataset$useage<- as.numeric(test_df_all_dataset$useage)
+head(test_df_all_dataset)
+
+cor.test(test_df_all_dataset$useage, test_df_all_dataset$avg_tem)
+#result 
+#p-value < 0.05,  이용실적과 기온은 상관이 통계적으로 유의하다 (인과X)
+#cor 0.433951  .....음...trend 제거하기 위해
+#      기온별 혹은 계절별 범주를 두고 분석하는것이 더 유의미함
+
+df_num_dataset <- df_all_dataset %>% 
+  select(useage,  highest_tem, lowest_tem) %>% 
+  filter(!is.na(useage))
+cor_1 <- cor(df_num_dataset)
+round(cor_1, 3)
+corrplot(cor_1)
+
+##remove the trend 
+##시도 seasonality, trend, random 요소로 분해해서 그리기
+
+try <- df_all_dataset %>% 
+  select(date, useage, avg_tem) %>% 
+  filter(!is.na(useage))
+head(try)
+plot(try, s.window = 'date')
+
+#기온에 따라 사용실적이 다를까?
+out=lm(useage~avg_tem, try)
+summary(out)
+plot(useage~avg_tem, try)
+abline(out, col='red')
+g_6 <- ggplot(data=try,aes(x=avg_tem,y=useage))+
+  geom_count()+
+  geom_smooth(method="lm")
+g_6
+ggplotly(g_6)
+#################################################
+
+
+
+#weather temperature 5도씩 범주 나눔, 
+
 
 
