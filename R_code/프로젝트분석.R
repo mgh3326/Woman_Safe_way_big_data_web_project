@@ -17,14 +17,14 @@ library(xts)
 library(corrplot)
 
 setwd('c:\\easy_r')
-dataset<-read.csv('gwanakgu2016.csv')
+dataset<-read.csv('useage_2016_gwanakgu.csv')
 
 df_dataset <-data.frame(date=dataset$date,
                         day=dataset$day,
                         useage=dataset$useage)
 df_dataset$day<- as.character(df_dataset$day)
 df_dataset$date<- as.Date(df_dataset$date)
-df_dataset
+head(df_dataset)
 
 
 ##01 relationship between day and useage  -요일별로 이용실적 건수에 차이가 있는가?
@@ -127,7 +127,7 @@ df_date_highest_tem
 
 g_3<- ggplot(data=df_date_highest_tem, aes(x=date, y=highest_tem))+
   geom_line()+
-  ylim(-10,40)
+  ylim(-20,40)
 g_3
 ggplotly(g_3)
 
@@ -139,7 +139,7 @@ df_date_lowest_tem
 
 g_4<- ggplot(data=df_date_lowest_tem, aes(x=date, y=lowest_tem))+
   geom_line()+
-  ylim(-10,40)
+  ylim(-20,40)
 g_4
 ggplotly(g_4)
 
