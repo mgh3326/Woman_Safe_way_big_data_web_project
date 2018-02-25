@@ -1,5 +1,6 @@
+install.packages('foreign')
 library(devtools)
-#devtools::install_github("cardiomoon/Kormaps")
+devtools::install_github("cardiomoon/Kormaps", force = TRUE)
 library(foreign)
 require(Kormaps)
 require(tmap)
@@ -11,7 +12,7 @@ Encoding(areacode$code)<-"UTF-8"
 areacode <- kormaps2014::changeCode(areacode)
 
 
-#í•¨ìˆ˜
+#?•¨?ˆ˜
 
 submap <- function(map,area){
   code<-area2code(area)
@@ -47,7 +48,7 @@ area2code <- function(area){
 
 
 
-##ì“¸ ë°ì´í„°íŒŒì¼
+##?“¸ ?°?´?„°?ŒŒ?¼
 
 getwd()
 setwd('c:/easy_r')
@@ -71,13 +72,13 @@ korpopmap5$codecode <- as.integer(korpopmap5$code1)
 #korpopmap5$codecode
 #class(korpopmap5$codecode)
 
-#greenë³€ìˆ˜ì— ë°ì´í„°ë„£ì–´ì•¼í•¨
+#greenë³€?ˆ˜?— ?°?´?„°?„£?–´?•¼?•¨
 
-korpopmap5$ë‚¨ìž_ëª… <- ifelse(korpopmap5$codecode == green$codecode, green$S, NA)
-table(is.na(korpopmap5$ë‚¨ìž_ëª…))
+korpopmap5$³²ÀÚ_¸í <- ifelse(korpopmap5$codecode == green$codecode, green$S, NA)
+table(is.na(korpopmap5$?‚¨?ž_ëª?))
 
-Seoul2=submap(korpopmap5,"ì„œìš¸")
-qtm(Seoul2,"ë‚¨ìž_ëª…")+tm_layout(fontfamily="AppleGothic")
+Seoul2=submap(korpopmap5,"?„œ?š¸")
+qtm(Seoul2,"?‚¨?ž_ëª?")+tm_layout(fontfamily="AppleGothic")
 
 
 
