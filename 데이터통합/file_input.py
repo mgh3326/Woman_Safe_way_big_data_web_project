@@ -12,3 +12,4 @@ for index in oh:
     temp = str(index).split(',')[0]
     print(temp+"  : ", end="")
     print(temp.split('-')[2])
+#주석
