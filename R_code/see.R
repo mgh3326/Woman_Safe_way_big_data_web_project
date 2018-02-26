@@ -67,6 +67,9 @@ green$codecode <- as.integer(green$code)
 
 ##
 
+
+korpopmap2
+
 korpopmap5 <- korpopmap2
 korpopmap5$codecode <- as.integer(korpopmap5$code1)
 #korpopmap5$codecode
