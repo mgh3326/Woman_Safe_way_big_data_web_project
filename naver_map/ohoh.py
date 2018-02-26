@@ -9,7 +9,7 @@ def naver_map(coordinate, output):
     client_id = "RuFoLfsTtI8AaT_9bWNn"
     client_secret = "kpOxKkLdiK"
     # print(coordinate)
-    encText = urllib.parse.quote(coordinate)
+    encText = urllib.parse.quote("126.9013,37.55598")
 
     url = "https://openapi.naver.com/v1/map/reversegeocode?query=" + encText  # json 결과
     # url = "https://openapi.naver.com/v1/map/geocode.xml?query=" + encText # xml 결과
@@ -22,11 +22,10 @@ def naver_map(coordinate, output):
     if(rescode == 200):
         response_body = response.read()
 
-        # print(response_body.decode('utf-8'))
+        print(response_body.decode('utf-8'))
         _json = json.loads(response_body.decode('utf-8'))
         if not _json["result"]["items"]:
-            return output
-        output += ","
+            print("ohoh")
         if(_json["result"]["items"][0]["addrdetail"]["sido"] == "서울특별시"):
             print(_json["result"]["items"][0]["addrdetail"]["sigugun"])
             output += _json["result"]["items"][0]["addrdetail"]["sigugun"]
