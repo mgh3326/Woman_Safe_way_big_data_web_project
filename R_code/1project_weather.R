@@ -27,7 +27,8 @@ df_dataset$date<- as.Date(df_dataset$date)
 head(df_dataset)
 
 
-##01 relationship between day and useage  -요일별로 이용실적 건수에 차이가 있는가?
+##01 relationship between day and useage  
+#-요일별로 이용실적 건수에 차이가 있는가?
 #결측치 확인
 #table(is.na(df_dataset$day))
 #table(is.na(df_dataset$useage))

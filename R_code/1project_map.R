@@ -22,10 +22,8 @@ korea <- fortify(korea, region='SIG_CD')              # sort
 korea <- merge(korea, data1, by='id')                 # merge
 seoul <- korea[korea$id <= 11740, ]                   # extract seoul
 
-# check seoul map
-# ggplot() + geom_polygon(data=seoul,
-#                         aes(x=long, y=lat, group=group, fill=area))
 
+#ÀÌ¿ë°Ç¼ö
 p<-ggplot() + geom_polygon(data=seoul,
                            aes(x=long, y=lat, group=group, fill=useage),
                            color='black')             # store seoul map into p 
@@ -33,10 +31,11 @@ p<-ggplot() + geom_polygon(data=seoul,
 p + scale_fill_gradient(low='white', high='#FF007F')+
   ggtitle("2015~2017 ¼­ºñ½º ÀÌ¿ë°Ç¼ö")# print map & change color
 
-
+#ÁöÇÏÃ¶ ÇÏÂ÷½Â°´¼ö
 pp<-ggplot() + geom_polygon(data=seoul,
                            aes(x=long, y=lat, group=group, fill=subway),
                            color='black')             # store seoul map into p 
 
 pp + scale_fill_gradient(low='white', high='blue')+
   ggtitle("ÁöÇÏÃ¶ ÇÏÂ÷½Â°´¼ö")# print map & change color
+
