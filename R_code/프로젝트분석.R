@@ -29,8 +29,8 @@ head(df_dataset)
 
 ##01 relationship between day and useage  -요일별로 이용실적 건수에 차이가 있는가?
 #결측치 확인
-table(is.na(df_dataset$day))
-table(is.na(df_dataset$useage))
+#table(is.na(df_dataset$day))
+#table(is.na(df_dataset$useage))
 #요일별 이용실적
 df_day_useage<- df_dataset %>% 
   group_by(day) %>% 
@@ -115,9 +115,9 @@ df_weather
 
 #all_dataset
 df_all_dataset<- left_join(df_dataset, df_weather, by='date')
-names(df_all_dataset)
-head(df_all_dataset)
-tail(df_all_dataset)
+#names(df_all_dataset)
+#head(df_all_dataset)
+#tail(df_all_dataset)
 
 
 #relationship between date and highest_tem
@@ -227,5 +227,5 @@ g_7<- ggplot(data= df_Tem_useage, aes(x=Tem, y=sum_useage))+
 g_7
 ggplotly(g_7)
 
-
+#Tem 별 useage 그리기
 
