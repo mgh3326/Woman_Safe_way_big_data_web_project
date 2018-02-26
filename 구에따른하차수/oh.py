@@ -34,7 +34,7 @@ goo = ["종로구",
        "강동구"]
 oh = list(repeat(0, 25))
 print(oh)
-while True:
+while True: # 파일 읽기
     line = f.readline()
     if not line:
         break
@@ -51,7 +51,7 @@ f.close()
 print(oh)
 f = open("output.csv", 'w')  # 날짜 파일 입력
 f.write("구,하차인원\n")
-for index in range(0, 25):
+for index in range(0, 25): # 리스트 25개를 출력 용도
     f.write(goo[index]+","+str(oh[index])+'\n')
 
 f.close
