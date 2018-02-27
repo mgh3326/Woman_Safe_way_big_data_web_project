@@ -42,7 +42,7 @@ while True: # 파일 읽기
     if(str(line).split(',')[0] != ""):
         print(goo.index(str(line).split(',')[0]))
         oh[goo.index(str(line).split(',')[0])] = goo.index(
-            str(line).split(',')[0])+int(str(line).split(',')[1])
+            str(line).split(',')[0])+int(str(line).split(',')[1]ㅇ)
         print(str(line).split(',')[0])
 
     # oh.append(str(line).split(',')[
