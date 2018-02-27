@@ -1,4 +1,4 @@
-f = open("outupt.csv", 'r')  # 날짜 파일 입력
+f = open("음음_output.csv", 'r')  # 날짜 파일 입력
 f.readline()
 my_oh = []
 while True:

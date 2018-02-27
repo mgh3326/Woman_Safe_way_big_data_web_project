@@ -1,6 +1,5 @@
 f = open("음음.csv", 'r')  # 날짜 파일 입력
 output = ""
-output += "지하철역\n"
 oh = []
 while True:
     line = f.readline()
