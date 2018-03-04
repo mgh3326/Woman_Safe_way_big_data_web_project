@@ -2,7 +2,7 @@
 
 > 서울시 안심스카우트 서비스 개선
 
-[웹사이트 바로가기](https://bigweb.azurewebsites.net/).
+[웹사이트 바로가기](https://bigweb.azurewebsites.net/)
 
 ![](images/logo.JPG)
 
@@ -45,3 +45,10 @@
 
 문광현, 박효선, 김아람, 고정원
 
+[다운로드 바로가기](https://github.com/mgh3326/auto_git_update/releases)
+
+여기 가서 my.sh 다운 받아서 사용할수 있게 해뒀어요
+
+[사용법 바로가기](https://github.com/mgh3326/auto_git_update/blob/master/README.md)
+
+사용법
