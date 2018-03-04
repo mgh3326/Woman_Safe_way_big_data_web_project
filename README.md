@@ -1,82 +1,47 @@
 # 빅데이터 웹개발 F반 1조 프로젝트
+
 > 서울시 안심스카우트 서비스 개선
 
 [웹사이트 바로가기](https://bigweb.azurewebsites.net/).
 
-<!-- [![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url] -->
-
-<!-- One to two paragraph statement about your product and what it does. -->
 ![](images/logo.JPG)
 
 <hr/>
 
-
-<!-- Link: [website][weblink]
-[weblink]: https://bigweb.azurewebsites.net/ "Go website" -->
-<!-- ## Installation
-
-OS X & Linux:
-
-```sh
-npm install my-crazy-module --save
-```
-
-Windows:
-
-```sh
-edit autoexec.bat
-``` -->
-
-<!-- ## Usage example
-
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
-
-_For more examples and usage, please refer to the [Wiki][wiki]._
-
-## Development setup
-
-Describe how to install all development dependencies and how to run an automated test-suite of some kind. Potentially do this for multiple platforms.
-
-```sh
-make install
-npm test
-``` -->
-
 ## Release History
-
-<!-- * 0.2.1
-    * CHANGE: Update docs (module code remains unchanged)
-* 0.2.0
-    * CHANGE: Remove `setDefaultXYZ()`
-    * ADD: Add `init()`
-* 0.1.1
-    * FIX: Crash when calling `baz()` (Thanks @GenerousContributorName!)
-* 0.1.0
-    * The first proper release
-    * CHANGE: Rename `foo()` to `bar()` -->
-* 2018/02/16
+* 2018/03/04
     * README update
+* 2018/02/27
+    * Web update
+    * Presentation
+* 2018/02/26
+    * Naver Api locate (위도, 경도 -> 구반환) update
+    * Web update
+* 2018/02/24 ~ 2018/02/25
+    * data update
+* 2018/02/23
+    * Google Api locate (위도, 경도) output update (complete)
+    * 지하철 data update
+* 2018/02/22
+    * 경찰서 data update
+* 2018/02/21
+    * wether update (2014~2016년)
+* 2018/02/20
+    * Google Api locate (위도, 경도) input update (init)
+* 2018/02/19
+    * web update (우리 지역, 개발 동기, 소개)
+* 2018/02/16
+    * README update and web update (pavicon update)
 * 2018/02/15
-    * 과거 날씨 엑셀화
+    * 과거 날씨 엑셀화 (2017년)
+* 2018/02/09 ~ 2018/02/14
+    * data update
+* 2018/02/08
+    * init and web update
 
-<!-- ## Meta
+<hr/>
 
-Your Name – [@YourTwitter](https://twitter.com/dbader_org) – YourEmail@example.com
+## 프로젝트 참석자
 
-Distributed under the XYZ license. See ``LICENSE`` for more information.
+문광현, 박효선, 김아람, 고정원
 
-[https://github.com/yourname/github-link](https://github.com/dbader/) -->
-
-## Contributing
-
-<!-- 1. Fork it (<https://github.com/yourname/yourproject/fork>)
-2. Create your feature branch (`git checkout -b feature/fooBar`)
-3. Commit your changes (`git commit -am 'Add some fooBar'`)
-4. Push to the branch (`git push origin feature/fooBar`)
-5. Create a new Pull Request
-
-Markdown link & img dfn's
-
-[website]: https://bigweb.azurewebsites.net/
