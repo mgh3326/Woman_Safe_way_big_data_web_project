@@ -23,5 +23,5 @@ requests==2.20.0
 requirements==0.1
 six==1.11.0
 urllib3==1.24.2
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 wrapt==1.10.11
